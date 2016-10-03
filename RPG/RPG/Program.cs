@@ -46,13 +46,13 @@ namespace RPG
                     playerStat.heroClassDefense = mage.heroClassDefense;
                     characterClassChoice = true;
                 }
-                else if (playerClassChoice == "Ranger")
+                else if (playerClassChoice == "Rogue")
                 {
-                    Console.WriteLine("You have chosen the Mage class.");
-                    playerStat.playerClass = ranger;
-                    playerStat.heroClassHealth = ranger.heroClassHealth;
-                    playerStat.heroClassAttackDamage = ranger.heroClassAttackDamage;
-                    playerStat.heroClassDefense = ranger.heroClassDefense;
+                    Console.WriteLine("You have chosen the Rogue class.");
+                    playerStat.playerClass = rogue;
+                    playerStat.heroClassHealth = rogue.heroClassHealth;
+                    playerStat.heroClassAttackDamage = rogue.heroClassAttackDamage;
+                    playerStat.heroClassDefense = rogue.heroClassDefense;
                     characterClassChoice = true;
                 }
                 else
@@ -90,6 +90,10 @@ namespace RPG
 
     }
 
+    // ------------------------------------------------
+    // ----------------- Hero Classes -----------------
+    // ------------------------------------------------
+                              
     public class HeroClassAttributes
     {
         public string heroClassName { get; set; }
