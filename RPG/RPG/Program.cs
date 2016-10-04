@@ -19,7 +19,7 @@ namespace RPG
             Console.WriteLine("Welcome to your adventure, hero. \nBefore we continue, what is your name?");
             playerStat.playerName = Console.ReadLine();
             Console.WriteLine("Hello, adventurer {0}", playerStat.playerName);
-            Console.WriteLine("What type of adventurer would you like to be?\n
+            Console.WriteLine("What type of adventurer would you like to be?\n")
             Console.WriteLine("(1): {0} || Health: {1} Damage: {2} Defence: {3} ''{4}''", warrior.heroClassName, warrior.heroClassHealth, warrior.heroClassAttackDamage, warrior.heroClassDefense, warrior.heroClassDescription);
             Console.WriteLine("(2): {0} || Health: {1} Damage: {2} Defence: {3} ''{4}''", mage.heroClassName, mage.heroClassHealth, mage.heroClassAttackDamage, mage.heroClassDefense, mage.heroClassDescription);
             Console.WriteLine("(3): {0} || Health: {1} Damage: {2} Defence: {3} ''{4}''", rogue.heroClassName, rogue.heroClassHealth, rogue.heroClassAttackDamage, rogue.heroClassDefense, rogue.heroClassDescription);
