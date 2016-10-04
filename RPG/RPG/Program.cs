@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,14 +12,14 @@ namespace RPG
         public static HeroClassAttributes mage = new BaseMageClass();
         public static HeroClassAttributes rogue = new BaseRogueClass();
         public static BasePlayer basePlayerStat = new BasePlayer();
-        public static playerStatsCurrent playerStat = new playerStats();
+        public static playerStatsCurrent playerStat = new playerStatsCurrent();
 
         static void Main(string[] args)
         {
             Console.WriteLine("Welcome to your adventure, hero. \nBefore we continue, what is your name?");
             playerStat.playerName = Console.ReadLine();
             Console.WriteLine("Hello, adventurer {0}", playerStat.playerName);
-            Console.WriteLine("What type of adventurer would you like to be?\n")
+            Console.WriteLine("What type of adventurer would you like to be?\n");
             Console.WriteLine("(1): {0} || Health: {1} Damage: {2} Defence: {3} ''{4}''", warrior.heroClassName, warrior.heroClassHealth, warrior.heroClassAttackDamage, warrior.heroClassDefense, warrior.heroClassDescription);
             Console.WriteLine("(2): {0} || Health: {1} Damage: {2} Defence: {3} ''{4}''", mage.heroClassName, mage.heroClassHealth, mage.heroClassAttackDamage, mage.heroClassDefense, mage.heroClassDescription);
             Console.WriteLine("(3): {0} || Health: {1} Damage: {2} Defence: {3} ''{4}''", rogue.heroClassName, rogue.heroClassHealth, rogue.heroClassAttackDamage, rogue.heroClassDefense, rogue.heroClassDescription);
@@ -32,27 +32,27 @@ namespace RPG
                 if (playerClassChoice == "Warrior")
                 {
                     Console.WriteLine("You have chosen the Warrior class.");
-                    playerStat.heroClassHealth = warrior.heroClassHealth;
-                    playerStat.heroClassAttackDamage = warrior.heroClassAttackDamage;
-                    playerStat.heroClassDefense = warrior.heroClassDefense;
+                    playerStat.playerHealth = warrior.heroClassHealth;
+                    playerStat.playerAttackDamage = warrior.heroClassAttackDamage;
+                    playerStat.playerDefense = warrior.heroClassDefense;
                     characterClassChoice = true;
                 }
                 else if (playerClassChoice == "Mage")
                 {
                     Console.WriteLine("You have chosen the Mage class.");
                     playerStat.playerClass = mage;
-                    playerStat.heroClassHealth = mage.heroClassHealth;
-                    playerStat.heroClassAttackDamage = mage.heroClassAttackDamage;
-                    playerStat.heroClassDefense = mage.heroClassDefense;
+                    playerStat.playerHealth = mage.heroClassHealth;
+                    playerStat.playerAttackDamage = mage.heroClassAttackDamage;
+                    playerStat.playerDefense = mage.heroClassDefense;
                     characterClassChoice = true;
                 }
                 else if (playerClassChoice == "Rogue")
                 {
                     Console.WriteLine("You have chosen the Rogue class.");
                     playerStat.playerClass = rogue;
-                    playerStat.heroClassHealth = rogue.heroClassHealth;
-                    playerStat.heroClassAttackDamage = rogue.heroClassAttackDamage;
-                    playerStat.heroClassDefense = rogue.heroClassDefense;
+                    playerStat.playerHealth = rogue.heroClassHealth;
+                    playerStat.playerAttackDamage = rogue.heroClassAttackDamage;
+                    playerStat.playerDefense = rogue.heroClassDefense;
                     characterClassChoice = true;
                 }
                 else
