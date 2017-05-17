@@ -18,61 +18,65 @@ namespace RPG2
         {
             Console.WriteLine("Welcome to your adventure, hero. \nBefore we continue, what is your name?");
             playerStat.playerName = Console.ReadLine();
-            Console.WriteLine("Hello, adventurer {0}", playerStat.playerName);
+            Console.WriteLine("Hello, {0}.", playerStat.playerName);
+            Console.Clear();
             Console.WriteLine("What type of adventurer would you like to be?\n");
             Console.WriteLine("(1): {0} || Health: {1} Damage: {2} Defence: {3} ''{4}''", warrior.heroClassName, warrior.heroClassHealth, warrior.heroClassAttackDamage, warrior.heroClassDefense, warrior.heroClassDescription);
             Console.WriteLine("(2): {0} || Health: {1} Damage: {2} Defence: {3} ''{4}''", mage.heroClassName, mage.heroClassHealth, mage.heroClassAttackDamage, mage.heroClassDefense, mage.heroClassDescription);
             Console.WriteLine("(3): {0} || Health: {1} Damage: {2} Defence: {3} ''{4}''", rogue.heroClassName, rogue.heroClassHealth, rogue.heroClassAttackDamage, rogue.heroClassDefense, rogue.heroClassDescription);
 
-            string playerClassChoice = Console.ReadLine();
+            PlayerChoice:
+                string playerClassChoice = Console.ReadLine();
 
-            bool characterClassChoice = false;
-            while (characterClassChoice == false)
+            switch (playerClassChoice)
             {
-                if (playerClassChoice == "Warrior")
-                {
+                case "1":
+                case "w":
+                case "warrior":
+                case "Warrior":
                     Console.WriteLine("You have chosen the Warrior class.");
-                    playerStat.playerClassName = "Warrior"; 
+                    playerStat.playerClassName = "Warrior";
                     playerStat.playerHealth = warrior.heroClassHealth;
                     playerStat.playerAttackDamage = warrior.heroClassAttackDamage;
                     playerStat.playerDefense = warrior.heroClassDefense;
-                    characterClassChoice = true;
-                }
-                else if (playerClassChoice == "Mage")
-                {
+                    break;
+                case "2":
+                case "m":
+                case "mage":
+                case "Mage":
                     Console.WriteLine("You have chosen the Mage class.");
                     playerStat.playerClassName = "Mage";
                     playerStat.playerHealth = mage.heroClassHealth;
                     playerStat.playerAttackDamage = mage.heroClassAttackDamage;
                     playerStat.playerDefense = mage.heroClassDefense;
-                    characterClassChoice = true;
-                }
-                else if (playerClassChoice == "Rogue")
-                {
+                    break;
+                case "3":
+                case "r":
+                case "rogue":
+                case "Rogue":
                     Console.WriteLine("You have chosen the Rogue class.");
                     playerStat.playerClassName = "Rogue";
                     playerStat.playerHealth = rogue.heroClassHealth;
                     playerStat.playerAttackDamage = rogue.heroClassAttackDamage;
                     playerStat.playerDefense = rogue.heroClassDefense;
-                    characterClassChoice = true;
-                }
-                else
-                {
-                    Console.WriteLine("You must choose a class...");
-                    continue;
-                }
-                Console.WriteLine(playerStat.playerClassName);
-                Console.WriteLine("So... You wish to be a {0}?", playerStat.playerClassName);
-                Console.ReadLine();
+                    break;
+                default:
+                    Console.WriteLine("Please choose a class from the list.\n (1) Warrior | (2) Mage | (3) Rogue");
+                    goto PlayerChoice;
             }
+            Console.ReadLine();
+            Console.Clear();
+            Console.WriteLine("So... You wish to be a {0}?\nVery well, {1}.", playerStat.playerClassName, playerStat.playerName);
+            Console.ReadLine();
         }
 
         public class BasePlayer
         {
             public HeroClassAttributes playerClass { get; set; }
-            public string playerName;
+            public string playerName = "playerName";
             public string playerClassName { get; set; }
             public int playerLevel { get; set; }
+            public int playerExperience { get; set; }
             public int heroClassHealth { get; set; }
             public int heroClassAttackDamage { get; set; }
             public int heroClassDefense { get; set; }
