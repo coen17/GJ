@@ -13,6 +13,7 @@ namespace RPG2
         public static HeroClassAttributes rogue = new BaseRogueClass();
         public static BasePlayer basePlayerStat = new BasePlayer();
         public static playerStatsCurrent playerStat = new playerStatsCurrent();
+        public static EnemyGoblin enemyGolbin = new EnemyGoblin();
 
         static void Main(string[] args)
         {
@@ -25,8 +26,8 @@ namespace RPG2
             Console.WriteLine("(2): {0} || Health: {1} Damage: {2} Defence: {3} ''{4}''", mage.heroClassName, mage.heroClassHealth, mage.heroClassAttackDamage, mage.heroClassDefense, mage.heroClassDescription);
             Console.WriteLine("(3): {0} || Health: {1} Damage: {2} Defence: {3} ''{4}''", rogue.heroClassName, rogue.heroClassHealth, rogue.heroClassAttackDamage, rogue.heroClassDefense, rogue.heroClassDescription);
 
-            PlayerChoice:
-                string playerClassChoice = Console.ReadLine();
+            PlayerChoiceStart:
+            string playerClassChoice = Console.ReadLine();
 
             switch (playerClassChoice)
             {
@@ -62,11 +63,38 @@ namespace RPG2
                     break;
                 default:
                     Console.WriteLine("Please choose a class from the list.\n (1) Warrior | (2) Mage | (3) Rogue");
-                    goto PlayerChoice;
+                    goto PlayerChoiceStart;
             }
             Console.ReadLine();
             Console.Clear();
-            Console.WriteLine("So... You wish to be a {0}?\nVery well, {1}.", playerStat.playerClassName, playerStat.playerName);
+
+            Console.WriteLine("So... You wish to be a {0}?\nVery well, {1}. You must travel to the town of ", playerStat.playerClassName, playerStat.playerName);
+            Console.WriteLine("**You feel as if your body becomes a blur within the universe, your eyesight becomes blind, and you find yourself on the border of an unfamiliar town.**\n\n**From what you can tell you are wearing unwashed rags, and you feel as if you have some gold in your pocket.**");
+            Console.WriteLine("Would you like to count the amount of gold you have?\n(1) Yes | (2) No");
+
+            Random rnd = new Random();
+            basePlayerStat.playerBaseGold = rnd.Next(0, 20);
+            string wouldLikeToKnowGold = Console.ReadLine();
+                        
+            // Getting used to switch statements
+            switch (wouldLikeToKnowGold)
+            {
+                case "1":
+                case "y":
+                case "yes":
+                case "Yes":
+                    Console.WriteLine("You count that you have {0} gold.",basePlayerStat.playerBaseGold);
+                    break;
+                case "2":
+                case "n":
+                case "no":
+                case "No":
+                    Console.WriteLine("You continue without counting your gold.");
+                        break;
+                default:
+                    Console.WriteLine("You decide to count your gold anyway, you count {0} gold.", basePlayerStat.playerBaseGold);
+                    break;
+            }
             Console.ReadLine();
         }
 
@@ -74,12 +102,13 @@ namespace RPG2
         {
             public HeroClassAttributes playerClass { get; set; }
             public string playerName = "playerName";
-            public string playerClassName { get; set; }
-            public int playerLevel { get; set; }
-            public int playerExperience { get; set; }
-            public int heroClassHealth { get; set; }
-            public int heroClassAttackDamage { get; set; }
-            public int heroClassDefense { get; set; }
+            public string playerClassName;
+            public int playerLevel;
+            public int playerExperience;
+            public int playerBaseGold;
+            public int heroClassHealth;
+            public int heroClassAttackDamage;
+            public int heroClassDefense;
 
         }
 
@@ -90,9 +119,17 @@ namespace RPG2
             public string playerClassName;
             public int playerLevel;
             public int playerExperience;
+            public int playerGold;
             public int playerAttackDamage;
             public int playerHealth;
             public int playerDefense;
+        }
+
+        public class FightStart
+        {
+            private static EnemyGoblin enemyGoblin = new EnemyGoblin();
+            Random enemyAttack = new Random();
+
         }
 
         // ------------------------------------------------
@@ -143,6 +180,17 @@ namespace RPG2
                 heroClassHealth = 9;
                 heroClassDefense = 3;
             }
+        }
+
+        // ------------------------------------------------
+        // ----------------- Enemies ----------------------
+        // ------------------------------------------------
+
+        public class EnemyGoblin
+        {
+            public string goblinName = "Goblin";
+            public int goblinHealth = 5;
+            public int golbinGold;
         }
 
     }
